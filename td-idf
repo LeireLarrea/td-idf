@@ -1,0 +1,20 @@
+from Bag import *
+from tf_idf import tf, idf
+from math import log    # this is needed for the tests, not for your code
+
+document1 = Bag()
+for term in ['the', 'fox']:
+    document1.add(term)
+
+document2 = Bag()
+for term in ['Rex', 'the', 'dog']:
+    document2.add(term)
+
+allDocuments = [document1, document2]
+
+def tf_idf(term, documents):
+    result = []
+    for each in documents:
+        result.append(tf(term, each)*idf(term, documents))
+            
+    return result
