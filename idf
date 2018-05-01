@@ -1,0 +1,19 @@
+from Bag import *
+from math import log
+
+document1 = Bag()
+for term in ['the', 'fox']:
+    document1.add(term)
+
+document2 = Bag()
+for term in ['Rex', 'the', 'dog']:
+    document2.add(term)
+
+allDocuments = [document1, document2]
+
+def idf(term, documents):
+    total = len(documents)
+    containing = 0
+    for each in documents:
+        containing = containing + each.contains(term)
+    return log(total / (1 + containing))
